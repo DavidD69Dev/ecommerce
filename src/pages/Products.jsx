@@ -40,11 +40,11 @@ const Products = () => {
   }
 
   const filteredData = data?.filter((item) => 
-    item.title.toLowerCase().includes(search.toLocaleLowerCase()) && 
+    item.title?.toLowerCase().includes(search.toLocaleLowerCase()) && 
     (category === "All" || item.category === category) &&
     (brand === "All" || item.brand === brand) &&
     item.price >= priceRange[0] && item.price <= priceRange[1]
-  )
+  );
 
   const dynamicPage = Math.ceil(filteredData?.length / 8 )
 
@@ -70,7 +70,7 @@ const Products = () => {
               />
               {
                 filteredData?.length > 0 ? (
-                  <div className='flex flex-col justify-center items-center'>
+                  <div className='flex flex-col items-center'>
                     <div className='grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-7 mt-10'>
                 {
                   filteredData?.slice(page *8 - 8, page *8).map((product, index) => {
