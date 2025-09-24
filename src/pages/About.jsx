@@ -37,7 +37,7 @@ const About = () => {
         <div className="text-center mt-10">
           <h3 className="text-xl font-semibold text-red-600 mb-2">Join the Amazing Family</h3>
           <p className="text-gray-700 mb-4">
-            Whether you’re a tech enthusiast, a professional, or just looking for something cool and functional — Amazing has something for everyone.
+            Whatever you’re a tech enthusiast, a professional, or just looking for something cool and functional — Amazing has something for everyone.
           </p>
          <Link to={'/products'}><button className="bg-red-600 text-white px-6 py-2 rounded-xl hover:bg-red-700 transition duration-300">
             Start Shopping

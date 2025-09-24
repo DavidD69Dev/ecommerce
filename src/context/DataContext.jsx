@@ -5,16 +5,16 @@ import axios from "axios";
 export const DataContext = createContext(null);
 
 export const DataProvider = ({ children }) => {
-    const [data, setData] = useState()
+    const [data, setData] = useState([]);
 
     const fetchAllProducts = async() => {
         try {
-            const res = await axios.get('https://fakestoreapi.in/api/products?limit=150')
-            const productsData = res.data.products
-            setData(productsData)
+            const res = await axios.get('https://dummyjson.com/products?limit=0')
+            const productsData = res.data.products;
+            setData(productsData);
 
         }catch (error) {
-
+            console.error(error)
         }
     }
 
@@ -26,8 +26,8 @@ export const DataProvider = ({ children }) => {
         return newVal
     }
 
-    const categoryOnlyData = getUniqueCategory(data, "category")
-    const brandOnlyData = getUniqueCategory(data, "brand")
+    const categoryOnlyData = data ? getUniqueCategory(data, "category") : [];
+    const brandOnlyData = data ? getUniqueCategory(data, "brand") : [];
 
     return (
         <DataContext.Provider value={{ data, setData, fetchAllProducts, categoryOnlyData, brandOnlyData }}>

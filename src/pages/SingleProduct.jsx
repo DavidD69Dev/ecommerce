@@ -14,10 +14,10 @@ const SingleProduct = () => {
   const getSingleProduct = async () => {
     try {
       const res = await axios.get(
-        `https://fakestoreapi.in/api/products/${params.id}`
+        `https://dummyjson.com/products/${params.id}`
       );
       const product = res.data.product;
-      setSingleProduct(product);
+      setSingleProduct(res.data);
     } catch (error) {}
   };
 
@@ -25,17 +25,17 @@ const SingleProduct = () => {
     getSingleProduct();
   }, []);
 
-  const originalPrice = Math.round(singleProduct.price + (singleProduct.price * singleProduct.discount / 100))
+  const originalPrice = Math.round(singleProduct?.price || 0) + ((singleProduct?.price || 0) * (singleProduct?.discount || 0) / 100)
 
   return (
     <>
       {
-      SingleProduct ? 
+      singleProduct ? 
         <div className="px-4 pb-4 md:px-0">
           <Breadcrums title={singleProduct.title} />
           <div className="max-w-6xl mx-auto md:p-6 grid grid-cols-1 md:grid-cols-2 gap-10">
             <div className="w-full">
-              <img src={singleProduct.image} 
+              <img src={singleProduct.thumbnail} 
               alt={singleProduct.title} 
               className="rounded-2xl w-full object-cover"
               />

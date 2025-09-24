@@ -25,7 +25,7 @@ const Cart = ({location, getLocation}) => {
               {cartItem.map((item, index) => {
                 return <div key={index} className='bg-gray-100 p-5 rounded-md flex items-center justify-between mt-3 w-full'>
                   <div className='flex items-center gap-4'>
-                    <img src={item.image} alt={item.title} className='w-20 h-20 rounded-md'/>
+                    <img src={item.images[0]} alt={item.title} className='w-20 h-20 rounded-md'/>
                     <div>
                       <h1 className='md:w-[300px] line-clamp-2'>{item.title}</h1>
                       <p className='text-red-500 font-semibold text-lg'>${item.price}</p>
